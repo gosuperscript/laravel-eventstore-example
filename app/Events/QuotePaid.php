@@ -3,7 +3,7 @@
 namespace App\Events;
 
 use DigitalRisks\LaravelEventStore\Contracts\CouldBeReceived;
-use DigitalRisks\LaravelEventStore\Contracts\ShouldBeStored;
+use DigitalRisks\LaravelEventStore\Contracts\ShouldBeEventStored;
 use DigitalRisks\LaravelEventStore\Traits\ReceivedFromEventStore;
 use DigitalRisks\LaravelEventStore\Traits\SendsToEventStore;
 use Illuminate\Broadcasting\Channel;
@@ -14,7 +14,7 @@ use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
-class QuoteStarted implements ShouldBeStored, CouldBeReceived
+class QuotePaid implements ShouldBeEventStored, CouldBeReceived
 {
     use Dispatchable, SerializesModels, SendsToEventStore, ReceivedFromEventStore;
 
@@ -37,6 +37,6 @@ class QuoteStarted implements ShouldBeStored, CouldBeReceived
 
     public function getEventType(): string
     {
-        return 'quote_started';
+        return 'quote_paid';
     }
 }

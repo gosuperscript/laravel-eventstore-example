@@ -26,7 +26,9 @@ class SendQuoteEmail
      */
     public function handle(QuoteStarted $event)
     {
-        if (!config('eventstore.replay') && $event->getEventRecord()) return;
+        dump('Received event quote started for ' . $event->ref);
+
+        if ($event->getEventRecord()) return;
 
         dump('Sending quote started email for ' . $event->ref);
     }
