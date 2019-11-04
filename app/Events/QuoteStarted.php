@@ -4,19 +4,17 @@ namespace App\Events;
 
 use DigitalRisks\LaravelEventStore\Contracts\CouldBeReceived;
 use DigitalRisks\LaravelEventStore\Contracts\ShouldBeStored;
+use DigitalRisks\LaravelEventStore\Traits\AddsHerokuMetadata;
+use DigitalRisks\LaravelEventStore\Traits\AddsLaravelMetadata;
+use DigitalRisks\LaravelEventStore\Traits\AddsUserMetaData;
 use DigitalRisks\LaravelEventStore\Traits\ReceivedFromEventStore;
 use DigitalRisks\LaravelEventStore\Traits\SendsToEventStore;
-use Illuminate\Broadcasting\Channel;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Broadcasting\PrivateChannel;
-use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Foundation\Events\Dispatchable;
-use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Queue\SerializesModels;
 
 class QuoteStarted implements ShouldBeStored, CouldBeReceived
 {
-    use Dispatchable, SerializesModels, SendsToEventStore, ReceivedFromEventStore;
+    use Dispatchable, SerializesModels, SendsToEventStore, ReceivedFromEventStore, AddsUserMetaData, AddsHerokuMetadata, AddsLaravelMetadata;
 
     public $ref;
 
