@@ -26,6 +26,16 @@ class EventStoreServiceProvider extends EventStoreApplicationServiceProvider
     }
 
     /**
+     * Handle logging when event is triggered.
+     *
+     * @return void
+     */
+    public function logger()
+    {
+        EventStore::logger();
+    }
+
+    /**
      * Register the application services.
      */
     public function register()
