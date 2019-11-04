@@ -6,7 +6,4 @@ return [
     'volatile_streams' => ['volatile-quotes'],
     'subscription_streams' => ['example-quotes'],
     'group' => 'laravel-eventstore-example',
-    'type_to_class' => function ($event) {
-        return 'App\Events' . $event->getType();
-    }
 ];
